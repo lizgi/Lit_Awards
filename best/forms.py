@@ -13,7 +13,12 @@ class showprojectform(ModelForm):
                  'url',
                )
 
-class UpdateProfileForm(forms.ModelForm):
+# class UpdateProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ('bio', 'profile_picture') 
+
+class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ('bio', 'profile_picture')               
+        exclude = ['user']    
