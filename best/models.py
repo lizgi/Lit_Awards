@@ -6,10 +6,10 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Profile(models.Model):
-  profile_pic = models.ImageField(default='default.jpg',upload_to='profile/')
+  profile_pic = CloudinaryField("image")
   bio = models.TextField()
   contact=models.CharField(max_length=100)
-  user = models.OneToOneField(User,on_delete = models.CASCADE)
+  user = models.OneToOneField(User,on_delete = models.CASCADE,null=True)
 
 def save_profile(self):
     self.save()
