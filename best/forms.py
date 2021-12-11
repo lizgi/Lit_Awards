@@ -13,10 +13,10 @@ class showprojectform(ModelForm):
                  'url',
                )
 
-# class UpdateProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = ('bio', 'profile_picture') 
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('profile_pic','bio','contact') 
 
 class ProfileForm(ModelForm):
     class Meta:
