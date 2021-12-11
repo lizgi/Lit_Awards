@@ -4,7 +4,8 @@ from django.http  import HttpResponse, request
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Profile,Project
-from .forms import showprojectform,UpdateProfileForm
+from .forms import showprojectform,UpdateProfileForm,ProfileForm
+from django.http  import HttpResponse,HttpResponseRedirect
 
 # Create your views here.
 
@@ -18,7 +19,7 @@ def profile(request):
     profile = Profile.objects.filter(user_id=current_user.id).first()
     project = Project.objects.filter(user_id=current_user.id)
 
-    return render(request,"profile.html",{'profile':profile})
+    return render(request,"profile.html",{'profile':profile,'project':project})
 
 @login_required(login_url='/accounts/login/')
 def showProject(request):
@@ -34,14 +35,30 @@ def showProject(request):
 
 def update_profile(request,id):
     user = User.objects.get(id=id)
-    profile = Profile.objects.get(user = user)
+    profile = Profile.objects.get(user_id = user)
     form = UpdateProfileForm(instance=profile)
     if request.method == "POST":
             form = UpdateProfileForm(request.POST,request.FILES,instance=profile)
-            if form.is_valid():      
+            if form.is_valid():  
+                
                 profile = form.save(commit=False)
                 profile.save()
-                return redirect('laurels:profile' ,username=user.username) 
+                return redirect('profile') 
             
     ctx = {"form":form}
-    return render(request, 'update_profile.html', ctx)    
+    return render(request, 'update_profile.html', ctx)
+
+def create_profile(request):
+    current_user = request.user
+    title = "Create Profile"
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return HttpResponseRedirect('/')
+
+    else:
+        form = ProfileForm()
+    return render(request, 'create_profile.html', {"form": form, "title": title})    
