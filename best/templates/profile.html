@@ -1,0 +1,41 @@
+{% extends "all-best/base.html" %}
+{% block content %}
+<br><br>
+<br><br>
+<section class="profile container">
+    <div class=" mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    {% if profile.profile_photo %}
+                    <img src="{{profile.profile_pic.url}}" alt="" style="border-radius: 50%;">
+                    {%else%}
+                    <img src="https://www.kindpng.com/picc/m/78-785975_icon-profile-bio-avatar-person-symbol-chat-icon.png"
+                        class="card-img-top" alt="My profile picture">
+                    {% endif %}
+                    <div class="card-body text-center">
+                        <h4 class="card-text">
+                            {{ user.first_name }} {{ user.last_name }}
+                        </h4>
+                        <p>{{ user.username }}</p>
+                        
+                        <p>
+                            {% if profile.bio %}
+                            <small>{{ profile.bio }}</small>
+                            {% else %}
+                            <span class="text-danger">No about me</span>
+                            {% endif %}
+                        </p>
+                        <h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
+                                {{ user.date_joined }} </span></h6>
+                                <p>{{ profile.contact }}</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   </section>
+
+   
+   {% endblock %}
