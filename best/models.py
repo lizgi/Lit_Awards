@@ -34,6 +34,7 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     title = models.CharField(max_length=250)
     description = models.TextField()
+    category=models.TextField(max_length=30,null=True)
     image = CloudinaryField("image")
     url = models.URLField(blank=True)
     location = models.CharField(max_length=100)
@@ -70,6 +71,15 @@ class Project(models.Model):
 
     def delete_project(self):
         self.delete()
+
+    @classmethod
+    def search_project_name(cls, search_term):
+        projects = cls.objects.filter(
+        title__icontains=search_term)
+        return projects    
+
+    def str(self):
+        return self.user.username    
 
     def __str__(self):
         return self.title
