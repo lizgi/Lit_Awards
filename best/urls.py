@@ -10,6 +10,7 @@ urlpatterns=[
     path('update_profile/<int:id>',views.update_profile, name='update_profile'),
     path('create_profile/',views.create_profile,name = 'create_profile'),
     # path('accounts/register/', RegistrationView.as_view(success_url='/create_profile'),name='django_registration_register'),
-    
+    path("project/<int:project_id>/", views.project_details, name="project_details"),
+    path('search/', views.search_project, name='search'),
 ]
 
