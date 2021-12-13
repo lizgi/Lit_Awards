@@ -8,7 +8,7 @@
 </head>
 <body>
   {% load bootstrap4 %}
-  <nav class="navbar navbar-default navbar-light bg-success" style="padding: 1em;">
+  <nav class="navbar navbar-default navbar-light bg-warning" style="padding: 1em;">
     <div class="container-fluid">
       <img src="https://cdn-icons-png.flaticon.com/512/819/819590.png" width="50" alt="">
       <div class="col-sm-2 col-md-2 navbar-header">
@@ -18,14 +18,17 @@
 
       <div class="col-sm-3 col-md-3 navbar-right">
         
-        <form class="navbar-form" role="search" action="">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="search" name="category">
-            <div class="input-group-btn">
-              <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+        <div class="forms">
+          <form class=" form" role="search" action="{% url 'search' %}">
+            <div class="input-group " >
+              <input type="text" class="form-control" placeholder="Search projects by Title" name="search"  >
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true" style="color: white;"></i></button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+          
+      </div>
       </div>
 
       <div class="col-sm-3 col-md-3">
