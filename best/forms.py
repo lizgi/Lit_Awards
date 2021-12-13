@@ -9,6 +9,7 @@ class showprojectform(ModelForm):
         fields=('image',
                 'title',
                 'description',
+                'category',
                 'location',
                  'url',
                )
