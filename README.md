@@ -1,4 +1,4 @@
-# insta_replica
+# Lit_Awards
 
 ### 11th Dec 2021
 
@@ -28,7 +28,7 @@ Accolades is a platform where different creators get to  post their works,,,then
 
 ## Clone the repository:  
  
-https://github.com/lizgi/accolades
+https://github.com/lizgi/lit_awards
 
 ## Navigate into the folder and install requirements  
  cd accolades pip install -r requirements.txt 
