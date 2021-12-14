@@ -17,7 +17,7 @@
       
       <div class="carousel-item">
         <img class="d-block w-100" height="500"
-          src="/static/images/display.jpeg"
+          src="/static/images/cup.jpg"
           alt="Third slide">
       </div>
     </div>
@@ -44,10 +44,10 @@
 
   <div class="row mt-4" id="">
     {% for proj in project %}
-    <div class="col-md-12 col-md-6 col-lg-4" id="main" style="gap: 15px;">
-      <div class="card mb-4 " id="" style="width: 25rem;height: fit-content;margin: 10px;padding: 5px;">
+    <div class="col-md-12 col-md-6 col-lg-6" id="main" style="gap:5px;">
+      <div class="card mb-4 " id="" style="width:35rem;height:fit-content;margin: 10px;padding: 5px;">
         <a href="{% url 'project_details' proj.id %}">
-          <img src="{{ proj.image.url }}" class="card-img-top responsive" alt="Personal"style="object-fit: cover;height: 260px;">
+          <img src="{{ proj.image.url }}" class="card-img-top responsive" alt="Personal"style="object-fit: cover;height:360px;">
         </a>
         <div class="card-body ">
           <p class="fade-item mb-2">{{ proj.title}}</p>
