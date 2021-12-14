@@ -56,9 +56,9 @@
               <p class="text-capitalise">category:  {{ proj.category}}</p>
             </div>
             <div>
-              <p>{{ proj.date|date}}</p>
-              <p>{{ proj.user.bio}}</p>
-              <a href="{{ proj.url }}"><button class="btn btn-outline-info">view_site</button></a>
+              <a href="{{ proj.url }}"><button class="btn btn-outline-info">view_project</button></a>
+              <br> <br>
+              <a href="{% url 'project_details' proj.id %}"><button class="btn btn-outline-info">Rate_project</button></a>
             </div>
 
           </div>

@@ -14,10 +14,20 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-from decouple import config
+import django_heroku
+import dj_database_url
+from pathlib import Path
+from decouple import config,Csv
 
+MODE=config("MODE", default="dev")
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', True)
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -25,13 +35,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!p1*3i2c$0@uf3mc%it@4dug%#9#82ofo8n5_^oai490vh2@!)'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -46,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -56,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'bestawards.urls'
@@ -91,6 +99,9 @@ DATABASES = {
         'HOST':config('DB_HOST'),
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -129,10 +140,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
 cloudinary.config(
     cloud_name = config('CL_NAME'),
     api_key= config('CL_KEY'),
@@ -140,5 +155,6 @@ cloudinary.config(
     
 )
 
+django_heroku.settings(locals())
 
 
