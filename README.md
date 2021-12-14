@@ -30,8 +30,10 @@ Accolades is a platform where different creators get to  post their works,,,then
  
 https://github.com/lizgi/lit_awards
 
-## Navigate into the folder and install requirements  
+## Navigate into the folder and install requirements 
+
  cd accolades pip install -r requirements.txt 
+
 ## Install and activate Virtual 
 
 python3 -m venv virtual - source virtual/bin/activate  
