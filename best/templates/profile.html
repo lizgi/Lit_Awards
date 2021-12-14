@@ -1,7 +1,6 @@
 {% extends "all-best/base.html" %}
 {% block content %}
-<br><br>
-<br><br>
+
 <section class="profile container">
     <div class=" mt-5">
         <div class="row">
@@ -41,7 +40,7 @@
       <h3>{{user.username}}</h3>
       {% if request.user is user %}  
       <div>
-        <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-primary mb-4">
+        <a href="{%url 'update_profile' user.id %}" class="btn btn-outline-warning mb-4">
           Edit Profile
         </a>
       </div>

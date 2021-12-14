@@ -50,15 +50,15 @@
           <img src="{{ proj.image.url }}" class="card-img-top responsive" alt="Personal"style="object-fit: cover;height:360px;">
         </a>
         <div class="card-body ">
-          <p class="fade-item mb-2">{{ proj.title}}</p>
+          <p class="fade-item mb-2"> Title:{{ proj.title}}</p>
           <div class="d-flex justify-content-between location-date">
             <div>
-              <p class="text-capitalise">{{ proj.location }}</p>
+              <p class="text-capitalise">{{ proj.location}}</p>
             </div>
             <div>
               <p>{{ proj.date|date}}</p>
               <p>{{ proj.user.bio}}</p>
-              <a href="{{ proj.url }}"><button class="btn btn-outline-info">link</button></a>
+              <a href="{{ proj.url }}"><button class="btn btn-outline-info">view_site</button></a>
             </div>
 
           </div>
