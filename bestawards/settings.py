@@ -26,7 +26,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = ['*']
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -42,7 +42,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Application definition
 
 INSTALLED_APPS = [
-    'best',
+    'best.apps.BestConfig',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD':config('DB_PASSWORD'),
-        'HOST':config('DB_HOST'),
+        
     }
 }
 
@@ -157,4 +157,4 @@ cloudinary.config(
 
 django_heroku.settings(locals())
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
