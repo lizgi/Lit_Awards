@@ -12,5 +12,8 @@ urlpatterns=[
     # path('accounts/register/', RegistrationView.as_view(success_url='/create_profile'),name='django_registration_register'),
     path("project/<int:project_id>/", views.project_details, name="project_details"),
     path('search/', views.search_project, name='search'),
+    path('rate/<int:id>',views.rate, name='rate'),
+    path('api/projects/', views.ProjectList.as_view()),
+    path('api/profiles/',views.ProfileList.as_view())
 ]
 
